@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <a href="home"><img src="./assets/logo.png"></a>
-      <!-- navbar -->
+      <!-- navbar test deneme-->
       <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
         <div class="container">
         <router-link to="/" class="navbar-brand">Home</router-link>
