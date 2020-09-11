@@ -3,21 +3,16 @@ import Router from 'vue-router'
 import home from '@/components/home'
 import blog from '@/components/blog'
 import services from '@/components/services'
-import contact from '@/components/contact'
 import details from '@/components/details'
 import java from '@/components/java'  
-import mongo from '@/components/mongo'  
+import mongo from '@/components/mongo' 
+import newarticle from '@/components/newarticle'  
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: home
-    },
-    {
-      path: '/home',
       name: 'home',
       component: home
     },
@@ -31,11 +26,7 @@ export default new Router({
       name: 'services',
       component: services
     },
-    {
-      path: '/contact',
-      name: 'contact',
-      component: contact
-    },
+    
     {
       path: '/details/:Pid',
       name: 'details',
@@ -50,6 +41,11 @@ export default new Router({
       path: '/mongo',
       name: 'mongo',
       component: mongo
+    },
+    {
+      path: '/newarticle',
+      name: 'newarticle',
+      component: newarticle
     }
     
   ]
