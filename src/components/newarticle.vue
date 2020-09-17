@@ -57,8 +57,8 @@ export default {
   },
   methods: {
         onSubmit() {
-          console.log(this.article);
-          debugger;
+          // console.log(this.article);
+          // debugger;
           axios
             .post("/article", { ...this.article })        
             .then((response) => {
