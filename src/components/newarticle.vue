@@ -27,7 +27,7 @@
             <select class="browser-default custom-select" v-model="article.articletype">
               <option
                 v-for="atype in articleTypes"
-                v-bind:value="article.id"
+                v-bind:value="atype.title"
               >{{atype.title}}</option>
             </select>
           </div>
@@ -51,17 +51,20 @@ export default {
         console.log(response);
         let data = response.data;
         this.articleTypes = data;
+        
       })
-      .catch((e) => console.log(e));
+        
   },
   methods: {
         onSubmit() {
           console.log(this.article);
+          debugger;
           axios
-            .post("/article", { ...this.article })
+            .post("/article", { ...this.article })        
             .then((response) => {
               console.log(response);
               this.article = {};
+              
             })
             .catch((e) => console.log(e));
         },
@@ -69,7 +72,6 @@ export default {
   data() {
     return {
       article: {
-        id: "",
         title: "",
         content: "",
         url: "",

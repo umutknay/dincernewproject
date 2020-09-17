@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
+
 import home from '@/components/home'
 import blog from '@/components/blog'
 import services from '@/components/services'
@@ -7,9 +8,10 @@ import details from '@/components/details'
 import java from '@/components/java'  
 import mongo from '@/components/mongo' 
 import newarticle from '@/components/newarticle'  
-Vue.use(Router)
 
-export default new Router({
+Vue.use(VueRouter)
+
+export const router =  new VueRouter({
   routes: [
     {
       path: '/',
@@ -28,7 +30,9 @@ export default new Router({
     },
     
     {
-      path: '/details/:Pid',
+      path: '/details/:aname',beforeEnter:(to,from,next)=>{
+        next();
+      },
       name: 'details',
       component: details
     },
@@ -48,5 +52,7 @@ export default new Router({
       component: newarticle
     }
     
-  ]
+  ],
+  mode:"history"
 })
+

@@ -1,19 +1,23 @@
 <template>
-	<div class="details">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12" v-for="(product,index) in products" :key="index"> 
-					<div v-if="proId == product.productId">
-						<h1>{{product.productTitle}}</h1>
-						<img :src="product.image" class="img-fluid">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div>
+ <h1>test deneme detail {{article}}</h1>
+  <button @click="test">Tıkla</button>
+</div>
+ 
 </template>
 <script>
-	export default{
-		
-	}
+export default {
+  data() {
+    return {
+	  article : this.$route.params.aname,
+	 
+	};
+	
+  },
+  methods:{
+	  test(){
+		  console.log(this.article);
+	  }
+  }
+};
 </script>

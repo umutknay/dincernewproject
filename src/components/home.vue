@@ -1,6 +1,7 @@
 <template>
+
 <html>
-  <head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></head>
+ 
   <div class="container-fluid pt-5">
     <a class="btn" href="https://github.com/umutknay" rel="noopener" target="blank" 
     aria-label="Follow @umutkınay on GitHup">
@@ -22,27 +23,17 @@
  <router-link to="/newarticle" class="item">
             <i class="plus circle icon"></i> New
           </router-link>
-<h1 class="text-center">Makale Listesi</h1>
-    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-    </div>
-	<font title="Frontend Development With JS"><router-link to="/java" tag="a" class="list-group-item list-group-item-action flex-column align-items-start" >
-  <b><font size="5">Frontend Development With JS</font></b>/Published August 14th 2020</router-link></font>
-  
-  <font title="Vue.JS Eğitim Seti"><router-link to="/vuejs" tag="a" class="list-group-item list-group-item-action flex-column align-items-start"><b><font size=
-  "5">Vue.JS Eğitim Seti</font></b>/Published August 30th 2020</router-link></font>
-  <font title="MongoDb Eğitim Seti">	<router-link to="/mongo" tag="a" class="list-group-item list-group-item-action flex-column align-items-start" >
-  <b><font size="5">MongoDb Eğitim Seti</font></b>/Published September 5th 2020</router-link></font>
+  </div>
 	
 	<hr/>
     <router-view></router-view>
     
-  
-   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
-  v-for="article in articleList">
-            {{article.title}} --{{article.id}}
-            
- 
-      
+  <div v-for="article in articleList" :key="article.title">
+      <a href="#"
+    @click="goDetail(article.title)" class="list-group-item list-group-item-action flex-column align-items-start"
+    >
+            {{article.title}} 
+
 	<hr/>
     <router-view></router-view>
     <div class="d-flex w-100 justify-content-between">
@@ -50,6 +41,8 @@
       <small class="text-muted">3 days ago</small>
     </div>  
   </a> 
+  </div>
+   
   
     
   
@@ -88,7 +81,14 @@
    
     data(){
       return{
-        articleList:[]
+        articleList:[],
+        articlename:null
+      }
+    },
+    methods:{
+      goDetail(article){
+        console.log(article);
+        this.$router.push({name:'details',params: { aname: article }})
       }
     }
   }

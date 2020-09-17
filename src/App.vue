@@ -101,19 +101,4 @@ export default {
     opacity: 1;
   }
 }
-
-
-
-.moveInUp-leave-active{
-  animation: moveInUp .3s ease-in;
-}
-@keyframes moveInUp{
- 0%{
-  transform: translateY(0);
- }
-  100%{
-  transform: translateY(-400px);
- }
-}
-
 </style>
