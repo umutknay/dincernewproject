@@ -36,7 +36,6 @@
     created(){
       axios.get("/article")
       .then(response => {
-        //console.log(response);
         let data = response.data;
         this.articleList = data;
       })
@@ -51,8 +50,7 @@
     },
     methods:{
       goDetail(article){
-        //console.log(article);
-        this.$router.push({name:'details',params: { aname: this.article }})
+        this.$router.push({name:'details',params: { aname: article }})
       }
     }
   }

@@ -25,10 +25,7 @@
         <div class="row">
           <div class="col-md-6 mb-4">
             <select class="browser-default custom-select" v-model="article.articletype">
-              <option
-                v-for="atype in articleTypes"
-                v-bind:value="atype.title"
-              >{{atype.title}}</option>
+              <option v-for="atype in articleTypes" :value="atype.id" :key="atype.id">{{atype.title}}</option>
             </select>
           </div>
         </div>

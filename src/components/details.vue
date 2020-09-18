@@ -3,7 +3,7 @@
     <form @submit.prevent="onSubmit">
       <div class="well">
         <h4>New Article</h4>
-		{{ articlename }}
+		        {{ articlename }}
         <div class="form-group">
           <input v-model="article.title" class="form-control" placeholder="title" />
         </div>
@@ -24,11 +24,8 @@
         </div>
         <div class="row">
           <div class="col-md-6 mb-4">
-            <select class="browser-default custom-select" v-model="article.articletype">
-              <option
-                v-for="atype in articleTypes"
-                v-bind:value="atype.title"
-              >{{atype.title}}</option>
+            <select class="browser-default custom-select" v-model="article.articleType">
+              <option v-for="atype in articleTypes" :value="atype.id" :key="atype.id">{{atype.title}}</option>
             </select>
           </div>
         </div>
@@ -45,24 +42,23 @@
 import axios from "axios";
 export default {
 	created() {
+
+    axios
+      .get("/arttype")
+      .then((response) => {
+        let data = response.data;
+        this.articleTypes = data;
+      }).catch((e) => console.log(e));
+
     axios
       .get("/article/"+this.articlename.toString())
       .then((response) => {
-        console.log(response);
         let data = response.data;
         this.article = data;
-        
       })
 		.catch((e) => console.log(e));
 		
-	axios
-      .get("/arttype")
-      .then((response) => {
-        
-        let data = response.data;
-        this.articleTypes = data;
-        
-      })
+	
   },
   data() {
     return {
@@ -72,7 +68,7 @@ export default {
         title: "",
         content: "",
         url: "",
-        articletype: "",
+        articleType: "",
         image: "",
 	  },
 	  articleTypes: [],
@@ -81,16 +77,14 @@ export default {
   },
   methods:{
 	 onSubmit() {
-
+      
           axios
-            .put("/article", { ...this.article })        
+            .put("/article", { ...this.articlename, ...this.article })        
             .then((response) => {
-              console.log(response);
-              this.article = {};
-              
+              //this.article = {};
             })
             .catch((e) => console.log(e));
-        },
+        }
   }
 };
 </script>
