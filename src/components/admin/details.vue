@@ -2,8 +2,8 @@
   <div class="container">
     <form @submit.prevent="onSubmit">
       <div class="well">
-        <h4>New Article</h4>
-
+        <h4>Makale Güncelleme Ekranı</h4>
+		  
         <div class="form-group">
           <input v-model="article.title" class="form-control" placeholder="title" />
         </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="row">
           <div class="col-md-6 mb-4">
-            <select class="browser-default custom-select" v-model="article.articletype">
+            <select class="browser-default custom-select" v-model="article.articleType">
               <option v-for="atype in articleTypes" :value="atype.id" :key="atype.id">{{atype.title}}</option>
             </select>
           </div>
@@ -33,7 +33,7 @@
 
       <button
         type="submit"
-        class="btn btn-large btn-block btn-primary full-width">Kaydet</button>
+        class="btn btn-large btn-block btn-primary full-width">Güncelle</button>
     </form>
   </div>
 </template>
@@ -41,62 +41,50 @@
 <script>
 import axios from "axios";
 export default {
-  created() {
+	created() {
+
     axios
       .get("/arttype")
       .then((response) => {
-        console.log(response);
         let data = response.data;
         this.articleTypes = data;
-        
+      }).catch((e) => console.log(e));
+
+    axios
+      .get("/article/"+this.articlename.toString())
+      .then((response) => {
+        let data = response.data;
+        this.article = data;
       })
-        
+		.catch((e) => console.log(e));
+		
+	
   },
-  methods: {
-        onSubmit() {
-          // console.log(this.article);
-          // debugger;
-          axios
-            .post("/article", { ...this.article })        
-            .then((response) => {
-              console.log(response);
-              this.article = {};
-              
-            })
-            .catch((e) => console.log(e));
-        },
-      },
   data() {
     return {
-      article: {
+		
+	  articlename : this.$route.params.aname,
+	  article: {
         title: "",
         content: "",
         url: "",
-        articletype: "",
+        articleType: "",
         image: "",
-      },
-
-      articleTypes: [],
-    };
+	  },
+	  articleTypes: [],
+	};
+	
   },
+  methods:{
+	 onSubmit() {
+      
+          axios
+            .put("/article", { ...this.articlename, ...this.article })        
+            .then((response) => {
+              //this.article = {};
+            })
+            .catch((e) => console.log(e));
+        }
+  }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

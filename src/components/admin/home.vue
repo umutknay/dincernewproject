@@ -1,21 +1,15 @@
 <template>
 
  <div>
- <Header></Header>
+ <Header name="Yeni Makale" to="/newarticle"></Header>
 
 
  <div v-for="article in articleList" :key="article.id">
-      <a href="#"
-    @click="goDetail(article.id)" class="list-group-item list-group-item-action flex-column align-items-start"
-    >
+      <a href="#" @click="goDetail(article.id)" class="list-group-item list-group-item-action flex-column align-items-start">
             {{article.title}} 
 
-	<hr/>
     <router-view></router-view>
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">dincer</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>  
+ 
   </a> 
   </div>
 

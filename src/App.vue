@@ -15,7 +15,10 @@
               <router-link class="nav-link" to="/blog">Blog</router-link>
             </li>
             <li class="nav-item">
-            <router-link class="nav-link" to="/newarticle">New</router-link>
+              <router-link class="nav-link" to="/">Makaleler</router-link>
+            </li>
+             <li class="nav-item">
+              <router-link class="nav-link" to="/arttypes">Makale Tipleri</router-link>
             </li>
           </ul>
         </div>

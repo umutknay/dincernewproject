@@ -5,7 +5,7 @@ import App from './App'
 import {router} from './router'
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:54313/api";
+axios.defaults.baseURL = "http://localhost:5431/api";
 axios.defaults.headers.get["Accepts"] = "application/json";  //sadece json kabul
 
 Vue.config.productionTip = false

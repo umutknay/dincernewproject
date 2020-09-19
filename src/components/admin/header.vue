@@ -18,15 +18,15 @@
   <a href="http://www.dincerlojistik.com.tr/">
   <span>Dinçer Lojsitik</span> </a>
 </button> 
- <router-link to="/newarticle" class="item">
-            <i class="plus circle icon"></i> New
+ <router-link :to="to" class="item">
+            <i class="plus circle icon"></i> {{name}}
           </router-link>
   </div>
 </template>
 
 <script>
 export default {
-    
+    props:["name","to"]
 }
 </script>
 
