@@ -3,7 +3,8 @@
     <form @submit.prevent="onSubmit">
       <div class="well">
         <h4>Makale Güncelleme Ekranı</h4>
-		  
+		    <img alt="Qries" v-bind:src="article.image" width="150" height="70">
+        <hr>
         <div class="form-group">
           <input v-model="article.title" class="form-control" placeholder="title" />
         </div>
@@ -21,7 +22,9 @@
         </div>
         <div class="form-group">
           <input v-model="article.image" type="text" class="form-control" placeholder="image" />
+        
         </div>
+
         <div class="row">
           <div class="col-md-6 mb-4">
             <select class="browser-default custom-select" v-model="article.articleType">
