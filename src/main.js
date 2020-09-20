@@ -7,6 +7,7 @@ import axios from "axios";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { ClientTable } from 'vue-tables-2';
 import VueConfirmDialog from 'vue-confirm-dialog'
+import Vuelidate from 'vuelidate'
 
 axios.defaults.baseURL = "http://localhost:5431/api";
 axios.defaults.headers.get["Accepts"] = "application/json";  //sadece json kabul
@@ -16,7 +17,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueConfirmDialog)
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
-
+Vue.use(Vuelidate)
 
 /* eslint-disable no-new */
 new Vue({

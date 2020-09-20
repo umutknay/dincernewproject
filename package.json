@@ -18,7 +18,8 @@
     "vue-datatables": "^0.1.4",
     "vue-router": "^3.0.1",
     "vue-tables-2": "^2.0.34",
-    "vue2-editor": "^2.10.2"
+    "vue2-editor": "^2.10.2",
+    "vuelidate": "^0.7.5"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

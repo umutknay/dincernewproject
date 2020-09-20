@@ -5,7 +5,10 @@
         <h4>Yeni Makale</h4>
 
         <div class="form-group">
-          <input v-model="article.title" class="form-control" placeholder="title" />
+         <input @blur="$v.article.title.$touch()" v-model.trim="article.title" class="form-control" placeholder="title" :class="{'is-invalid': $v.article.title.$error}"  />
+          <small v-if="!$v.article.title.required" class="form-text text-danger">Bu alan zorunludur.</small>
+          <small v-if="!$v.article.title.minLength" class="form-text text-danger">Başlık girdisi çok az.</small>
+          <small v-if="!$v.article.title.maxLength" class="form-text text-danger">Başlık girdisi çok fazla.</small>
         </div>
         <div class="form-group">
           <!-- <textarea
@@ -25,7 +28,7 @@
         </div>
         <div class="row">
           <div class="col-md-6 mb-4">
-            <select class="browser-default custom-select" v-model="article.articletype">
+            <select class="browser-default custom-select" v-model.lazy="article.articletype">
               <option v-for="atype in articleTypes" :value="atype.id" :key="atype.id">{{atype.title}}</option>
             </select>
           </div>
@@ -34,7 +37,7 @@
 
       <button
         type="submit"
-        class="btn btn-large btn-block btn-primary full-width">Kaydet</button>
+        class="btn btn-large btn-block btn-primary full-width" :disabled="$v.$invalid">Kaydet</button>
     </form>
   </div>
 </template>
@@ -42,6 +45,7 @@
 <script>
 import axios from "axios";
 import { VueEditor } from "vue2-editor";
+import { required, minLength, maxLength,  between } from "vuelidate/lib/validators";
 
 export default {
   components: {
@@ -85,6 +89,16 @@ export default {
       articleTypes: [],
     };
   },
+  validations:{
+    article:{
+      title:{
+        required,
+        minLength: minLength(4),
+        maxLength: maxLength(150)
+      }
+    }
+    
+  }
 };
 </script>
 

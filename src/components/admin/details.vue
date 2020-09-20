@@ -44,11 +44,9 @@
 
 <script>
 import axios from "axios";
-import { VueEditor } from "vue2-editor";
+
 export default {
-  components: {
-    VueEditor
-  },
+  
 	created() {
 
     axios
@@ -69,20 +67,20 @@ export default {
 	
   },
   data() {
-    return {
-		
-	  articlename : this.$route.params.aname,
-	  article: {
-        title: "",
-        content: "",
-        url: "",
-        articleType: "",
-        image: "",
-	  },
-	  articleTypes: [],
-	};
+    return {	
+      articlename : this.$route.params.aname,
+      article: {
+          title: "",
+          content: "",
+          url: "",
+          articleType: "",
+          image: "",
+      },
+      articleTypes: [],
+    };
 	
   },
+  
   methods:{
 	 onSubmit() {
       
