@@ -9,13 +9,14 @@
           <input v-model="article.title" class="form-control" placeholder="title" />
         </div>
         <div class="form-group">
-          <textarea
+          <!-- <textarea
             v-model="article.content"
             cols="40"
             rows="10"
             class="form-control"
-            placeholder="content"
-          ></textarea>
+            placeholder="content">
+            </textarea> -->
+            <vue-editor v-model="article.content"></vue-editor>
         </div>
         <div class="form-group">
           <input v-model="article.url" type="text" class="form-control" placeholder="url" />
@@ -43,7 +44,11 @@
 
 <script>
 import axios from "axios";
+import { VueEditor } from "vue2-editor";
 export default {
+  components: {
+    VueEditor
+  },
 	created() {
 
     axios
