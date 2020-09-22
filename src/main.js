@@ -8,6 +8,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { ClientTable } from 'vue-tables-2';
 import VueConfirmDialog from 'vue-confirm-dialog'
 import Vuelidate from 'vuelidate'
+import { store } from "./store"
 
 axios.defaults.baseURL = "http://localhost:5431/api";
 axios.defaults.headers.get["Accepts"] = "application/json";  //sadece json kabul
@@ -23,6 +24,7 @@ Vue.use(Vuelidate)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

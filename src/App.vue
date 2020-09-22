@@ -9,20 +9,16 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <!-- <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
-      
             <li class="nav-item">
-              <router-link class="nav-link" to="/blog">Blog</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/">Makaleler</router-link>
+              <router-link class="nav-link" to="/home">Makaleler</router-link>
             </li>
              <li class="nav-item">
               <router-link class="nav-link" to="/arttypes">Makale Tipleri</router-link>
             </li>
           </ul>
-        </div>
+        </div> -->
         </div>
       </div>
       <div class="container">

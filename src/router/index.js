@@ -2,15 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import home from '@/components/admin/home'
-import blog from '@/components/blog'
-import services from '@/components/services'
 import details from '@/components/admin/details'
-import java from '@/components/java'  
-import mongo from '@/components/mongo' 
 import newarticle from '@/components/admin/newarticle'  
 import arttypes from '@/components/admin/arttypes'
 import newarttype from '@/components/admin/newarttype'
 import arttypedetail from '@/components/admin/arttypedetail'
+import Index from '@/components/Index.vue'
+import Auth from "@/auth/Auth.vue";
+import { store } from "@/store";
 
 Vue.use(VueRouter)
 
@@ -18,56 +17,90 @@ export const router =  new VueRouter({
   routes: [
     {
       path: '/',
+      name: 'index',
+      component: Index
+    },
+    {
+      path: '/home',
       name: 'home',
-      component: home
+      component: home,
+      beforeEnter(to, from, next){
+        if(store.getters.isAuthenticated){
+            next()
+        }
+        else{
+            next("/auth")
+        }
+    }
     },
-    {
-      path: '/blog',
-      name: 'blog',
-      component: blog
-    },
-    {
-      path: '/services',
-      name: 'services',
-      component: services
-    },
+    { path : "/auth", component : Auth },
     
     {
       path: '/details/:aname',beforeEnter:(to,from,next)=>{
         next();
       },
       name: 'details',
-      component: details
-    },
-    {
-      path: '/java',
-      name: 'java',
-      component: java
-    },
-    {
-      path: '/mongo',
-      name: 'mongo',
-      component: mongo
+      component: details,
+      beforeEnter(to, from, next){
+        if(store.getters.isAuthenticated){
+            next()
+        }
+        else{
+            next("/auth")
+        }
+    }
     },
     {
       path: '/newarticle',
       name: 'newarticle',
-      component: newarticle
+      component: newarticle,
+      beforeEnter(to, from, next){
+        if(store.getters.isAuthenticated){
+            next()
+        }
+        else{
+            next("/auth")
+        }
+    }
     },
     {
       path: '/arttypes',
       name: 'arttypes',
-      component: arttypes
+      component: arttypes,
+      beforeEnter(to, from, next){
+        if(store.getters.isAuthenticated){
+            next()
+        }
+        else{
+            next("/auth")
+        }
+    }
     },
     {
       path: '/newarttype',
       name: 'newarttype',
-      component: newarttype
+      component: newarttype,
+      beforeEnter(to, from, next){
+        if(store.getters.isAuthenticated){
+            next()
+        }
+        else{
+            next("/auth")
+        }
+    }
     },
     {
       path: '/arttypedetail',
       name: 'arttypedetail',
-      component: arttypedetail
+      component: arttypedetail,
+      beforeEnter(to, from, next){
+        if(store.getters.isAuthenticated){
+            next()
+        }
+        else{
+            next("/auth")
+        }
+    }
     }
     
   ],
