@@ -1,5 +1,8 @@
 <template>
+<div> 
+  <Header name="Yeni Makale" to="/newarticle"></Header>
   <div class="container">
+   
     <form @submit.prevent="onSubmit">
       <div class="well">
         <h4>Yeni Makale</h4>
@@ -40,22 +43,24 @@
         class="btn btn-large btn-block btn-primary full-width" :disabled="$v.$invalid">Kaydet</button>
     </form>
   </div>
+</div>
 </template>
 
 <script>
 import axios from "axios";
 import { VueEditor } from "vue2-editor";
 import { required, minLength, maxLength,  between } from "vuelidate/lib/validators";
+ import Header from "./header"
 
 export default {
   components: {
-    VueEditor
+    VueEditor,Header
   },
   created() {
+   
     axios
       .get("/arttype")
       .then((response) => {
-        console.log(response);
         let data = response.data;
         this.articleTypes = data;
         
@@ -64,17 +69,14 @@ export default {
   },
   methods: {
         onSubmit() {
-          // console.log(this.article);
-          // debugger;
           axios
             .post("/article", { ...this.article })        
             .then((response) => {
-              console.log(response);
               this.article = {};
               
             })
             .catch((e) => console.log(e));
-        },
+        }
       },
   data() {
     return {
@@ -84,9 +86,11 @@ export default {
         url: "",
         articletype: "",
         image: "",
+        dates:  new Date().toLocaleString()
       },
 
       articleTypes: [],
+      datetimenow:""
     };
   },
   validations:{

@@ -27,7 +27,9 @@
       </li>
       <li class="nav-item"><router-link class="nav-link" to="/home">Makaleler</router-link></li>
       <li class="nav-item"><router-link class="nav-link" to="/arttypes">Makale Tipleri</router-link></li>
+      <li class="nav-item"><router-link :to="to" class="nav-link"> {{name}} </router-link></li>
       <li class="nav-item"><a @click.prevent="logout" class="nav-link" href="#">Çıkış Yap</a></li>
+      
     </ul>
   </div>
 </div>

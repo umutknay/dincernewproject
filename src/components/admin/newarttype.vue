@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Header name="Yeni Makale Tipi" to="/newarttype"></Header>
     <form @submit.prevent="onSubmit">
       <div class="well">
         <h4>Yeni Makale Tipi</h4>
@@ -26,8 +27,11 @@
 
 <script>
 import axios from "axios";
+import Header from "./header"
 export default {
-  
+  components: {
+    Header
+  },
   methods: {
         onSubmit() {
           axios
@@ -45,7 +49,7 @@ export default {
       arttype: {
         title: "",
         content: "",
-       
+        dates: new Date().toLocaleString()
       },
 
       articleTypes: [],

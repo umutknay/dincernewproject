@@ -20,6 +20,9 @@ Vue.use(Vuex);
         clearToken(state){
             state.token = "";
             localStorage.removeItem("token");
+        },
+        datetime(state,datetime){
+            state.datetime =datetime;
         }
     },
 
@@ -53,6 +56,14 @@ Vue.use(Vuex);
         },
         logout({ commit, dispatch, state }){
             commit("clearToken");
+        },
+        getNow({commit,dispatch,state}) {
+            const today = new Date();
+            const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            const dateTime = date +' '+ time;
+            this.timestamp = dateTime;
+            commit("datetime",this.timestamp);
         }
 
     },
