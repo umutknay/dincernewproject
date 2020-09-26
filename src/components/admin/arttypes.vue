@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Header name="Yeni Makale Tipi" to="/newarttype"></Header>
 
     <!-- <div v-for="articletype in articleTypeList" :key="articletype.id">

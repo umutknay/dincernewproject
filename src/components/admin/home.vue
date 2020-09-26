@@ -1,6 +1,6 @@
 <template>
 
- <div>
+ <div class="container">
  <Header name="Yeni Makale" to="/newarticle"></Header>
 
 <v-client-table 
