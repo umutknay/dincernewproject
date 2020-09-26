@@ -18,40 +18,23 @@
   <a href="http://www.dincerlojistik.com.tr/">
   <span>Dinçer Lojsitik</span> </a> 
 </button> -->
-  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <router-link :to="to" class="item">
-          <i class="plus circle icon"></i> {{name}}
-        </router-link>
-      </li>
+      <li class="nav-item"><router-link class="nav-link" :to="to">{{name}}</router-link> </li>
       <li class="nav-item"><router-link class="nav-link" to="/home">Makaleler</router-link></li>
       <li class="nav-item"><router-link class="nav-link" to="/arttypes">Makale Tipleri</router-link></li>
-      <li class="nav-item"><router-link :to="to" class="nav-link"> {{name}} </router-link></li>
-      <li class="nav-item"><a @click.prevent="logout" class="nav-link" href="#">Çıkış Yap</a></li>
-      
+      <li class="nav-item"><router-link class="nav-link" :to="to" > {{name}} </router-link></li>     
     </ul>
   </div>
+</nav>
 </div>
 </template>
 
 <script>
 export default {
     props:["name","to"],
-    methods: {
-      logout() {
-        this.$store.dispatch("logout");
-        //console.log("test");
-        this.$router.push("/auth")
-      }
-    },
-    computed: {
-      logoutClass() {
-        return {
-          'd-none': !this.$store.getters.isAuthenticated
-        }
-      }
-    }
+   
 }
 </script>
 

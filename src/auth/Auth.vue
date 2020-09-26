@@ -16,13 +16,13 @@
                         <input v-model="user.password" type="password" class="form-control" placeholder="Şifreniz...">
                     </div>
                     <div class="button-container d-flex  flex-column align-items-center">
-                        <button type="submit" :class="{'btn-primary' : isUser, 'btn-success' : !isUser }"
-                                class="btn btn-block mb-2">
-                            {{ isUser ? 'Giriş Yap' : 'Kayıt Ol' }}
+                        <button type="submit" 
+                                class="btn btn-block mb-2 btn-primary">
+                            Giriş Yap
                         </button>
-                        <a href="#" @click.prevent="isUser=!isUser" class="text-secondary">
+                        <!-- <a href="#" @click.prevent="isUser=!isUser" class="text-secondary">
                             {{ isUser ? 'Üye değilim' : 'Üyeliğim var'}}
-                        </a>
+                        </a> -->
                     </div>
                 </form>
             </div>
@@ -43,7 +43,7 @@
         },
         methods: {
             onSubmit() {
-                this.$store.dispatch("login", {...this.user, isUser : this.isUser })
+                this.$store.dispatch("login", {...this.user, isUser : true })
                 .then(response => {
                     this.$router.push("/home")
                 })

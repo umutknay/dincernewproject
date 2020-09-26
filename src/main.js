@@ -10,6 +10,10 @@ import VueConfirmDialog from 'vue-confirm-dialog'
 import Vuelidate from 'vuelidate'
 import { store } from "./store"
 
+import BootstrapVue from 'bootstrap-vue'
+
+
+//axios.defaults.baseURL = "http://okipu.net/api";
 axios.defaults.baseURL = "http://localhost:5431/api";
 axios.defaults.headers.get["Accepts"] = "application/json";  //sadece json kabul
 
@@ -19,6 +23,7 @@ Vue.config.productionTip = false
 Vue.use(VueConfirmDialog)
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 Vue.use(Vuelidate)
+Vue.use(BootstrapVue);
 
 /* eslint-disable no-new */
 new Vue({

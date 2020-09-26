@@ -18,7 +18,20 @@ export const router =  new VueRouter({
     {
       path: '/',
       name: 'index',
-      component: Index
+      component: Index,
+      meta: {
+        title: 'Admin',
+        metaTags: [
+          {
+            name: 'Article',
+            content: 'Article management'
+          },
+          {
+            property: 'Article Type',
+            content: 'Article Type Management'
+          }
+        ]
+      }
     },
     {
       path: '/home',

@@ -20,9 +20,6 @@ Vue.use(Vuex);
         clearToken(state){
             state.token = "";
             localStorage.removeItem("token");
-        },
-        datetime(state,datetime){
-            state.datetime =datetime;
         }
     },
 
@@ -49,21 +46,13 @@ Vue.use(Vuex);
             authLink + "AIzaSyAsKQgrRBYK5yNom081iYFRhTE71MQRyRs",
             { email : authData.email, password : authData.password, returnSecureToken : true }
             ).then(response => {
-               // console.log(response)
+               
                 commit("setToken",response.data.idToken)
                 localStorage.setItem("token",response.data.idToken);
             })
         },
         logout({ commit, dispatch, state }){
             commit("clearToken");
-        },
-        getNow({commit,dispatch,state}) {
-            const today = new Date();
-            const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-            const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            const dateTime = date +' '+ time;
-            this.timestamp = dateTime;
-            commit("datetime",this.timestamp);
         }
 
     },
