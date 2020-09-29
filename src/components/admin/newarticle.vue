@@ -1,8 +1,8 @@
 <template>
 <div> 
-  <Header name="Yeni Makale" to="/newarticle"></Header>
+ 
   <div class="container">
-   
+    <Header name="Yeni Makale" to="/newarticle"></Header>
     <form @submit.prevent="onSubmit">
       <div class="well">
         <h4>Yeni Makale</h4>
@@ -69,6 +69,7 @@ export default {
   },
   methods: {
         onSubmit() {
+          this.article.dates = new Date().toLocaleString();
           axios
             .post("/article", { ...this.article })        
             .then((response) => {
@@ -86,7 +87,7 @@ export default {
         url: "",
         articletype: "",
         image: "",
-        dates:  new Date().toLocaleString()
+        dates:  ""
       },
 
       articleTypes: [],

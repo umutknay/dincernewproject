@@ -9,6 +9,9 @@ import { ClientTable } from 'vue-tables-2';
 import VueConfirmDialog from 'vue-confirm-dialog'
 import Vuelidate from 'vuelidate'
 import { store } from "./store"
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
 
 import BootstrapVue from 'bootstrap-vue'
 
@@ -20,10 +23,11 @@ axios.defaults.headers.get["Accepts"] = "application/json";  //sadece json kabul
 Vue.use(ClientTable);
 Vue.config.productionTip = false
 
-Vue.use(VueConfirmDialog)
-Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
-Vue.use(Vuelidate)
+Vue.use(VueConfirmDialog);
+Vue.component('vue-confirm-dialog', VueConfirmDialog.default);
+Vue.use(Vuelidate);
 Vue.use(BootstrapVue);
+Vue.use(VueMaterial);
 
 /* eslint-disable no-new */
 new Vue({

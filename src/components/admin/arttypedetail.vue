@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Header name="Yeni Makale" to="/newarticle"></Header>
     <form @submit.prevent="onSubmit">
       <div class="well">
         <h4>Makale Tipi Güncelleme Ekranı</h4>
@@ -28,7 +29,11 @@
 
 <script>
 import axios from "axios";
+import Header from "./header"
 export default {
+   components: {
+    Header
+  },
 	created() {
     axios
      .get("/arttype/"+this.articlename.toString())
@@ -47,15 +52,16 @@ export default {
 	  articlename : this.$route.params.aname,
 	  articletype: {
         title: "",
-        description: ""
+        description: "",
+        dates: ""
 	  }
 	};
   },
   methods:{
 	 onSubmit() {
-      
+       this.articletype.dates = new Date().toLocaleString();
           axios
-            .put("/arttype", { ...this.articlename, ...this.articletype })        
+            .put("/arttype", { ...this.articletype })        
             .then((response) => {
               //this.article = {};
             })

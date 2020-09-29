@@ -34,6 +34,7 @@ export default {
   },
   methods: {
         onSubmit() {
+          this.articletype.dates = new Date().toLocaleString();
           axios
             .post("/arttype", { ...this.arttype })        
             .then((response) => {
@@ -49,7 +50,7 @@ export default {
       arttype: {
         title: "",
         content: "",
-        dates: new Date().toLocaleString()
+        dates: ""
       },
 
       articleTypes: [],

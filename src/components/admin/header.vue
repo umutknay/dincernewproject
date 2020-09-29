@@ -24,7 +24,7 @@
       <li class="nav-item"><router-link class="nav-link" :to="to">{{name}}</router-link> </li>
       <li class="nav-item"><router-link class="nav-link" to="/home">Makaleler</router-link></li>
       <li class="nav-item"><router-link class="nav-link" to="/arttypes">Makale Tipleri</router-link></li>
-      <li class="nav-item"><router-link class="nav-link" :to="to" > {{name}} </router-link></li>     
+        
     </ul>
   </div>
 </nav>

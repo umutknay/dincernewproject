@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+     <Header name="Yeni Makale Tipi" to="/newarttype"></Header>
     <form @submit.prevent="onSubmit">
       <div class="well">
         <h4>Makale Güncelleme Ekranı</h4>
@@ -44,9 +45,13 @@
 
 <script>
 import axios from "axios";
+import { VueEditor } from "vue2-editor";
+import Header from "./header"
 
 export default {
-  
+  components: {
+    VueEditor,Header
+  },
 	created() {
 
     axios
@@ -75,6 +80,7 @@ export default {
           url: "",
           articleType: "",
           image: "",
+          dates:  ""
       },
       articleTypes: [],
     };
@@ -83,9 +89,9 @@ export default {
   
   methods:{
 	 onSubmit() {
-      
+          this.article.dates = new Date().toLocaleString();
           axios
-            .put("/article", { ...this.articlename, ...this.article })        
+            .put("/article", { ...this.article })        
             .then((response) => {
               //this.article = {};
             })
