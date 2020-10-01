@@ -1,6 +1,6 @@
 <template>
-<div> 
- 
+<div>
+
   <div class="container">
     <Header name="Yeni Makale" to="/newarticle"></Header>
     <form @submit.prevent="onSubmit">
@@ -31,7 +31,7 @@
         </div>
         <div class="row">
           <div class="col-md-6 mb-4">
-            <select class="browser-default custom-select" v-model.lazy="article.articletype">
+            <select class="browser-default custom-select" v-model.lazy="article.articletype" @change="selectedArttype">
               <option v-for="atype in articleTypes" :value="atype.id" :key="atype.id">{{atype.title}}</option>
             </select>
           </div>
@@ -57,26 +57,35 @@ export default {
     VueEditor,Header
   },
   created() {
-   
+
     axios
       .get("/arttype")
       .then((response) => {
         let data = response.data;
         this.articleTypes = data;
-        
+
       })
-        
+
   },
   methods: {
         onSubmit() {
           this.article.dates = new Date().toLocaleString();
           axios
-            .post("/article", { ...this.article })        
+            .post("/article", { ...this.article })
             .then((response) => {
               this.article = {};
-              
+
             })
             .catch((e) => console.log(e));
+        },
+        selectedArttype(e){
+           this.arttype.id = e.target.value;
+           this.arttype.title = this.article.articletype;
+           this.arttypedetail.push = this.arttype;
+           this.article.arttypedetail = this.arttypedetail;
+          //console.log(e.target.value);
+          console.log(this.arttypedetail);
+
         }
       },
   data() {
@@ -87,10 +96,17 @@ export default {
         url: "",
         articletype: "",
         image: "",
-        dates:  ""
+        dates:  "",
+        arttypedetail:""
       },
-
+      arttype: {
+        id:"",
+        title: "",
+        content: "",
+        dates: ""
+      },
       articleTypes: [],
+      arttypedetail:[],
       datetimenow:""
     };
   },
@@ -102,7 +118,7 @@ export default {
         maxLength: maxLength(150)
       }
     }
-    
+
   }
 };
 </script>
