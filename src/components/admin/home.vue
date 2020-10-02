@@ -40,7 +40,7 @@
                     id : 'id',
                     title: 'Title',
                     url: 'Url',
-                    articleType: 'Tip',
+                    articletype: 'Tip',
                     actions: 'Actions'
                 },
                 sortable: ['id','title', 'url'],
@@ -53,10 +53,11 @@
       //   this.$router.push({name:'details',params: { aname: article }})
       // }
       getData(){
-        axios.get("/article")
+        axios.get("/articlecustom/getall")
       .then(response => {
         let data = response.data;
         this.articleList = data;
+        console.log(this.articleList);
       })
       .catch(e=>console.log(e))
       },
@@ -64,7 +65,6 @@
         this.$router.push({name:'details',params: { aname: Id }})
     },   
     erase (Id) {
-
        this.$confirm(
         {
           message: 'Emin misin?',

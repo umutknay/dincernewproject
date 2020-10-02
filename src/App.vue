@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid p-0">
+    <vue-confirm-dialog></vue-confirm-dialog>
    <app-header></app-header>
    <transition name="fade" mode="out-in">
      <router-view></router-view>

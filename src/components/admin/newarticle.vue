@@ -79,13 +79,10 @@ export default {
             .catch((e) => console.log(e));
         },
         selectedArttype(e){
-           this.arttype.id = e.target.value;
-           this.arttype.title = this.article.articletype;
-           this.arttypedetail.push = this.arttype;
+           this.arttype.Id = this.article.articletype
+           this.arttype.title = e.target.value;
+           this.arttypedetail.push(this.arttype);
            this.article.arttypedetail = this.arttypedetail;
-          //console.log(e.target.value);
-          console.log(this.arttypedetail);
-
         }
       },
   data() {
@@ -100,9 +97,9 @@ export default {
         arttypedetail:""
       },
       arttype: {
-        id:"",
+        Id:"",
         title: "",
-        content: "",
+        description: "",
         dates: ""
       },
       articleTypes: [],
