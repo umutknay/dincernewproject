@@ -57,7 +57,6 @@
       .then(response => {
         let data = response.data;
         this.articleList = data;
-        console.log(this.articleList);
       })
       .catch(e=>console.log(e))
       },

@@ -4,7 +4,7 @@
     <form @submit.prevent="onSubmit">
       <div class="well">
         <h4>Makale Güncelleme Ekranı</h4>
-		    <img alt="Qries" v-bind:src="article.image" width="150" height="70">
+		    <img alt="Qries" v-bind:src="article.image" width="150" height="70" v-if="article.image!=''">
         <hr>
         <div class="form-group">
           <input v-model="article.title" class="form-control" placeholder="title" />
@@ -69,7 +69,7 @@ export default {
       })
 		.catch((e) => console.log(e));
 		
-	
+    
   },
   data() {
     return {	
